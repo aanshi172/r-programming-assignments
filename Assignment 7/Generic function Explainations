@@ -1,0 +1,13 @@
+head() shows the top few records.
+
+str() describes the structure (variable types, sample values, etc.)
+
+print() is a generic that calls print.data.frame for data frames
+
+summary() is also generic, producing summaries for each variable
+
+plot() creates a scatter plot of two numeric columns and works on numeric vectors, not on entire data frames (no plot.data.frame method)
+
+
+
+
