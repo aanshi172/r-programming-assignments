@@ -1,0 +1,49 @@
+data("mtcars")
+head(mtcars)
+plot(mtcars$hp, mtcars$mpg,
+     main = "Base R: Horsepower vs MPG",
+     xlab = "Horsepower",
+     ylab = "Miles per Gallon",
+     col = "blue",
+     pch = 19)
+hist(mtcars$wt,
+     main = "Base R: Distribution of Car Weights",
+     xlab = "Weight (1000 lbs)",
+     col = "lightgreen",
+     border = "black")
+xyplot(mpg ~ hp | factor(cyl),
+       data = mtcars,
+       main = "Lattice: MPG vs HP by Cylinder Count",
+       xlab = "Horsepower",
+       ylab = "Miles per Gallon",
+       pch = 19,
+       col = "darkred")
+library(lattice)
+xyplot(mpg ~ hp | factor(cyl),
+       data = mtcars,
+       main = "Lattice: MPG vs HP by Cylinder Count",
+       xlab = "Horsepower",
+       ylab = "Miles per Gallon",
+       pch = 19,
+       col = "darkred")
+bwplot(wt ~ factor(cyl),
+       data = mtcars,
+       main = "Lattice: Weight by Cylinder Count",
+       xlab = "Cylinders",
+       ylab = "Weight (1000 lbs)",
+       col = "orange")
+library(ggplot2)
+ggplot(mtcars, aes(x = hp, y = mpg, color = factor(cyl))) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "ggplot2: MPG vs HP with Trend by Cylinders",
+       x = "Horsepower",
+       y = "Miles per Gallon",
+       color = "Cylinders")
+ggplot(mtcars, aes(x = wt, fill = factor(cyl))) +
+  geom_histogram(binwidth = 0.5, color = "black") +
+  facet_wrap(~ cyl) +
+  labs(title = "ggplot2: Weight Distribution by Cylinders",
+       x = "Weight (1000 lbs)",
+       y = "Count",
+       fill = "Cylinders")
