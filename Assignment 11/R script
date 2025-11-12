@@ -1,0 +1,33 @@
+et.seed(123)
+test_mat <- matrix(rnorm(50), nrow = 10)
+corrected_tukey <- function(x) {
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+  }
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  outlier.vec
+}
+tukey.outlier <- function(y) {
+  qnt <- quantile(y, probs = c(0.25, 0.75))
+  H <- 1.5 * IQR(y)
+  y < (qnt[1] - H) | y > (qnt[2] + H)
+}
+defensive_tukey <- function(x) {
+  if (!is.matrix(x)) stop("Input must be a matrix.")
+  if (!is.numeric(x)) stop("Matrix must be numeric.")
+  
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+  }
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  outlier.vec
+}
+corrected_tukey(test_mat)
