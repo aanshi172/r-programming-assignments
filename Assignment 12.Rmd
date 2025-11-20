@@ -1,0 +1,35 @@
+---
+title: "My R Markdown Primer"
+author: "Aanshi"
+date: "2025-11-19"
+output: html_document
+---
+
+## Introduction
+
+R Markdown is a framework that allows you to combine narrative text, R code, and mathematical notation into a single reproducible document. Instead of manually copying results into a report, R Markdown embeds executable code chunks so that the analysis and documentation stay synced automatically.
+
+## Narrative Section
+
+Working with R Markdown feels like writing and analyzing at the same time. It keeps the workflow clean because the explanations and the code that supports them live in one place. If the data changes, re-knitting the file updates all results—making it far more robust than traditional, static reports.
+
+## Mathematical Expressions
+
+Inline math example: $\alpha + \beta = \gamma$
+
+Displayed equation:
+
+$$
+E = mc^2
+$$
+
+## R Code Chunks
+
+### Load a Library and Dataset
+
+```{r setup, message=FALSE, warning=FALSE}
+library(ggplot2)
+data(mtcars)
+
+head(mtcars)
+
