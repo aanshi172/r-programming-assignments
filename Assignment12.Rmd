@@ -1,0 +1,49 @@
+---
+title: "My R Markdown Primer"
+author: "AanshiPandya"
+date: "2025-11-20"
+output: html_document
+---
+
+# Introduction
+
+R Markdown is a dynamic document format that combines narrative text, executable R code, and mathematical notation all in a single file. It simplifies reproducible research by embedding analysis and results directly with the report text.
+
+# Narrative Paragraph
+
+This document demonstrates the basics of R Markdown authoring including how to embed R code, write narrative text in Markdown format, and include LaTeX math expressions for mathematical clarity. Using R Markdown helps streamline the workflow between data analysis and reporting.
+
+# LaTeX Math Example
+
+An inline math expression looks like this: $\alpha + \beta = \gamma$.
+
+A displayed equation example:
+
+\[
+E = mc^2
+\]
+
+# Plot
+
+```{r}
+library(ggplot2)
+
+p <- ggplot(mpg, aes(x = class)) +
+  geom_bar(fill = "steelblue") +
+  theme_minimal() +
+  labs(
+    title = "Count of Vehicle Classes",
+    x = "Vehicle Class",
+    y = "Count"
+  )
+
+p
+```
+
+# Reflection
+
+Using R Markdown to author reports is much more efficient and reproducible than manually writing reports and then copying output. The integration of narrative, code, and output allows smoother workflows, reduces errors, and makes updates easier. It is a powerful tool for data scientists and researchers alike.
+
+# Conclusion
+
+R Markdown connects your text, code, and analysis results in one document, supporting reproducibility and transparency. This approach makes it easier to share and update analyses compared to separate reports and scripts, since everything needed is combined in a single, readable file.
